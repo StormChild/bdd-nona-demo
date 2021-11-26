@@ -116,7 +116,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-src/.DS_Store
-src/features/.DS_Store
-src/step-definitions/.DS_Store
-.DS_Store
+*.DS_Store
+output/*.json
