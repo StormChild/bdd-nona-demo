@@ -1,7 +1,7 @@
 Feature: Calculator
 Simple calculator for performing calculations on **two** numbers
 
-@Add
+@Addition
 Scenario: Add two numbers
 	Given the first number is 50
 	And the second number is 70
