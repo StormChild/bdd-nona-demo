@@ -19,6 +19,13 @@
 3. You can download these stories as feature files to your local drive
 4. You can copy these files into your feature folders at the beginning of each sprint
 
+## How to behave
+1. Behaviour driven development is a conversation between customers, stakeholders, project managers and development teams
+2. The language and stories should be understood by non-technical people
+3. The stories should be concrete or non-fiction
+4. The stories should have a narative that is real world
+5. Think non technical
+
 ## Simple Implementation
 Run the following commands to scaffold a project
 ```bash
@@ -29,14 +36,30 @@ npm i -D @cucumber/cucumber cucumber-pretty typescript ts-node chai
 npm i -D @types/cucumber @types/chai
 ```
 
+Add a cucumber.js file to the root of the project with the following contents:
+```javascript
+let common = [
+  'src/features/**/*.feature',
+  '--require-module ts-node/register',
+  '--require src/step-definitions/**/*.ts',
+  '--format progress',
+  '--format json:output/test-results.json'
+].join(' ');
+
+module.exports = {
+  default: common,
+  // More profiles can be added if desired
+};
+```
+
 Modify the package.json file to change the test script:
 ```json
-"test": "./node_modules/.bin/cucumber-js features/**/*.feature --require steps/**/*.ts --require-module ts-node/register --format progress-bar --format node_modules/cucumber-pretty"
+"test": "./node_modules/.bin/cucumber-js -p default"
 ```
 
 Create new folders for your tests:
 ```bash
-mkdir features && mkdir steps
+mkdir output && mkdir src && cd src && mkdir features && mkdir step-definitions 
 ```
 
 Create a feature file called 'calculator.feature' in your features folder.
@@ -255,6 +278,5 @@ Feature: Calculator
 8 steps (8 passed)
 
 ### TODO
-- Demo Living Docs
 - Sync with Jira
-- Generate Living Docs from Github
+- Add references
