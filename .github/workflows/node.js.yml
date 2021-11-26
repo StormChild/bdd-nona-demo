@@ -30,8 +30,10 @@ jobs:
     - run: mkdir -p "output"
     - run: npm run build --if-present
     - run: npm test
-    - run: |
-      curl -X POST https://c4j.cucumber.io/ci/rest/api/results \
-      -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjI1MTd9LCJpYXQiOjE2Mzc5MTE5MDh9.qWVYPwC349edyFwCZJ0o7VCo7JZxNFY9ZFGGE7qRwZs" \
-      -H 'content-type: multipart/form-data' \
-      -F 'results_files[]'=output/test-results.json -F language=js
+    - name: publish test results
+      run: |-
+        curl -X POST https://c4j.cucumber.io/ci/rest/api/results 
+        -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb20uc21hcnRiZWFyLmN1Y3VtYmVyIiwiYXVkIjoiY2kiLCJjb250ZXh0Ijp7ImxpdmluZ19kb2NfaWQiOjI1MTd9LCJpYXQiOjE2Mzc5MTE5MDh9.qWVYPwC349edyFwCZJ0o7VCo7JZxNFY9ZFGGE7qRwZs" 
+        -H 'content-type: multipart/form-data' 
+        -F 'results_files[]'=output/test-results.json 
+        -F language=js
