@@ -13,6 +13,11 @@
 2. Extension: Cucumber (Gherkin) Full Support 
 3. Extension: Gherkin PDF (optional) 
 
+### CI/CD
+1. Github
+2. Github Actions
+3. Curl to Cucumber for Jira (For living docs)
+
 ## Project Management
 1. Inside Jira you can setup your Cucumber for Jira with Cucumber files inside your tasks
 2. Once you have filled your backlog you can add these stories to your sprint
@@ -20,11 +25,29 @@
 4. You can copy these files into your feature folders at the beginning of each sprint
 
 ## How to behave
-1. Behaviour driven development is a conversation between customers, stakeholders, project managers and development teams
-2. The language and stories should be understood by non-technical people
-3. The stories should be concrete or non-fiction
-4. The stories should have a narative that is real world
-5. Think non technical
+
+### The gherkin in the mix
+Behaviour driven development is a conversation between customers, stakeholders, project managers and development/design teams. Abstract concepts is by its nature open for interpretation. So to eliminate misunderstandings (as much as possible) the gherkin syntax was created. You can read more at [Cucumber Website](https://cucumber.io/docs/gherkin/).
+
+1. The language and stories should be understood by non-technical people
+2. The stories should be concrete or non-fiction
+3. The stories should have a narative that is believable
+4. Think non technical i.e. imagine its 1820
+
+### The cucumber in the salad
+Cucumber and Gherkin often gets confused with each other. There is a distinct diference; Gherkin is a natural language wheras Cucumber is a framework. There are many frameworks that uses the Cucumber principles and on many platforms and languages.
+
+### TDD vs BDD
+BDD is a form of TDD. The difference being that in traditional TDD paradigms functions are tested individually, this is called unit testing. Functions doesn't exist in a vacuum. There is something that calls the function and there is a result or action from the function. When we call functions we have a context or scenario in mind. With BDD it becomes closer to integration or functional testing. BDD bridges the gap between unit tests and stories to create context for unit tests by creating a narative that is based on real-world scenarios.
+
+### To mock or not to mock
+With unit testing the key elements and context are usually mocked. This practise sometimes leads to mocks being generic, incomplete or even anti-production. Meaning that the first time code runs in the real world after a release there is a high risk of critical bugs being released into the wild. When using BDD it is often practised to use actual systems and data to describe and run tests. Obviously not everything will be built already and not everything can be tested. But the balance should test what your customer wants within the confines of what is controllable with the project.
+
+### To err is human
+If you are familiar with TDD principles, you should not be afraid of errors, they are your bread and butter. But also don't be afraid to call functions that does not exist. For example in a team there will be cases that certain core functionalities have not been built. If it is a blocker, mock it, if not, call the functions as you would imagine them, and let it break until the functionality has been built.
+
+### Sprint -> TODO
+When using tools like Jira and Cucumber for Jira you can define your sprints almost like checkboxes to be fullfilled. Done right will make the question "What do I do next" dissapear.
 
 ## Simple Implementation
 Run the following commands to scaffold a project
@@ -277,6 +300,8 @@ Feature: Calculator
 2 scenarios (2 passed)
 8 steps (8 passed)
 
+Now you should be able to commit your code and see the result on Jira!
+
 ### TODO
-- Sync with Jira
+- Circle CI implementation
 - Add references
